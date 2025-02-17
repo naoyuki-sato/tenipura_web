@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <p>最終更新日: yyyy/mm/dd hh:mm</p>
+    <p>最終更新日: 2025/3/5 13:00</p>
     <br />
     <v-sheet class="mx-auto">
       <v-table>

@@ -1,43 +1,42 @@
 <template>
   <v-container>
     <v-sheet class="mx-auto">
-      削除したい予定を選択してください。
-      <v-table>
-        <thead>
-          <tr>
-            <th>選択</th>
-            <th>日程</th>
-            <th>時間</th>
-            <th>場所</th>
-            <th>メモ</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(item, index) in schedules" :key="item.date">
-            <td>
-              <v-checkbox v-model="selectedRows" :value="index"></v-checkbox>
-            </td>
-            <td>{{ item.date }}</td>
-            <td>{{ item.time }}</td>
-            <td>{{ item.area }}</td>
-            <td>{{ item.memo }}</td>
-          </tr>
-        </tbody>
-      </v-table>
-      <div class="d-flex flex-row justify-end text-black">
-        <v-btn
-          color="primary"
-          @click="clickDeleteSchedule('clickDeleteSchedule')"
-        >
-          予定の削除
-        </v-btn>
-      </div>
-      <div v-if="selectedRows.length > 0">
-        選択された行番号: {{ selectedRows }}
-      </div>
-      <div v-if="selectedRows.length > 0">
-        選択されたデータ: {{ selectedData }}
-      </div>
+      <section v-if="loading">
+        <div>Loading</div>
+      </section>
+      <section v-else>
+        削除したい予定を選択してください。
+        <v-table>
+          <thead>
+            <tr>
+              <th>選択</th>
+              <th>日程</th>
+              <th>時間</th>
+              <th>場所</th>
+              <th>メモ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(item, index) in schedules" :key="item.date">
+              <td>
+                <v-checkbox v-model="selectedRows" :value="index"></v-checkbox>
+              </td>
+              <td>{{ item.date }}</td>
+              <td>{{ item.time }}</td>
+              <td>{{ item.area }}</td>
+              <td>{{ item.memo }}</td>
+            </tr>
+          </tbody>
+        </v-table>
+        <div class="d-flex flex-row justify-end text-black">
+          <v-btn
+            color="primary"
+            @click="clickDeleteSchedule('clickDeleteSchedule')"
+          >
+            予定の削除
+          </v-btn>
+        </div>
+      </section>
     </v-sheet>
   </v-container>
 </template>

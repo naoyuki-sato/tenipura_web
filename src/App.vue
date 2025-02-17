@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar :elevation="2">
       <template v-slot:prepend>
-        <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon @click="drawer = !drawer" />
       </template>
       <v-app-bar-title>テニプラ スケジュール</v-app-bar-title>
     </v-app-bar>
@@ -26,6 +26,12 @@
           </v-list-item-avatar>
           <v-list-item-title>予定の削除</v-list-item-title>
         </v-list-item>
+        <v-list-item :to="{ path: '/schedule_update' }">
+          <v-list-item-avatar>
+            <v-icon>mdi-tennis</v-icon>
+          </v-list-item-avatar>
+          <v-list-item-title>予定の更新</v-list-item-title>
+        </v-list-item>
         <v-list-item :to="{ path: '/accounting_home' }">
           <v-list-item-avatar>
             <v-icon>mdi-tennis</v-icon>
@@ -41,7 +47,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-main>
-      <router-view></router-view>
+      <router-view />
     </v-main>
   </v-app>
 </template>

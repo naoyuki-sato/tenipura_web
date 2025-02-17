@@ -1,5 +1,5 @@
 <template>
-  <TeniPuraScheduleDelete />
+  <TeniPuraScheduleUpdate />
 </template>
 
 <script setup></script>

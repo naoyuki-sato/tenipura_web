@@ -2,14 +2,21 @@
   <v-container>
     会計追加
     <v-sheet class="mx-auto">
-      会計入力
       <br /><br />
+      <v-row>
+        <v-col cols="1">
+          <v-label for="my-text-field">日程:</v-label>
+        </v-col>
+        <v-col cols="8">
+          <v-date-input prepend-icon="" v-model="accountDate" />
+        </v-col>
+      </v-row>
       <v-row>
         <v-col cols="1">
           <v-label for="my-text-field">内容:</v-label>
         </v-col>
         <v-col cols="8">
-          <v-radio-group inline>
+          <v-radio-group v-model="accountInout" inline>
             <v-radio label="支出" value="one" />
             <v-radio label="収入" value="two" />
           </v-radio-group>
@@ -17,18 +24,13 @@
       </v-row>
       <v-row>
         <v-col cols="1">
-          <v-label for="my-text-field">日程:</v-label>
-        </v-col>
-        <v-col cols="8">
-          <v-date-input prepend-icon="" />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="1">
           <v-label for="my-text-field">科目:</v-label>
         </v-col>
         <v-col cols="8">
-          <v-select :items="['コート代', 'ボール代', '大会参加費', '雑費']" />
+          <v-select
+            v-model="accountSubject"
+            :items="['コート代', 'ボール代', '大会参加費', '雑費']"
+          />
         </v-col>
       </v-row>
       <v-row>
@@ -36,7 +38,7 @@
           <v-label for="my-text-field">金額:</v-label>
         </v-col>
         <v-col cols="8">
-          <v-text-field suffix="円" />
+          <v-text-field v-model="accountAmount" suffix="円" />
         </v-col>
       </v-row>
       <v-row>
@@ -44,7 +46,7 @@
           <v-label for="my-text-field">備考:</v-label>
         </v-col>
         <v-col cols="8">
-          <v-text-field />
+          <v-text-field v-model="accountMemo" />
         </v-col>
       </v-row>
       <v-row>
@@ -55,6 +57,9 @@
           </div>
         </v-col>
       </v-row>
+      v-modelの初期化が必要
+      <div>日程: {{ accountDate }}</div>
+      <div>内容: {{ accountInout }}</div>
     </v-sheet>
 
     <p>最終更新日: yyyy/mm/dd hh:mm</p>
@@ -89,11 +94,14 @@
 <script setup>
   import { ref, onMounted } from 'vue';
   import axios from 'axios';
+  import { VDateInput } from 'vuetify/labs/VDateInput';
 
   const loading = ref(false);
   const errored = ref(false);
 
   const schedules = ref(null);
+
+  const accountDate = ref(new Date());
 
   onMounted(() => {
     let string_url =
