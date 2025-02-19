@@ -35,7 +35,7 @@ export default defineConfig({
       },
     }),
   ],
-  base: process.env.NODE_ENV === 'production' ? '/tenipura_other/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/tenipura_web/' : '/',
   define: { 'process.env': {} },
   resolve: {
     alias: {
