@@ -32,6 +32,7 @@
           </v-list-item-avatar>
           <v-list-item-title>予定の更新</v-list-item-title>
         </v-list-item>
+        <!--
         <v-list-item :to="{ path: '/accounting_home' }">
           <v-list-item-avatar>
             <v-icon>mdi-tennis</v-icon>
@@ -44,6 +45,7 @@
           </v-list-item-avatar>
           <v-list-item-title>会計の追加</v-list-item-title>
         </v-list-item>
+        -->
       </v-list>
     </v-navigation-drawer>
     <v-main>
