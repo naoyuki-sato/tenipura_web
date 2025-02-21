@@ -1,1 +1,0 @@
-import{_ as e}from"./TeniPuraScheduleHome-B6Khm7p-.js";/* empty css                                                                  */import{c as r,o as t}from"./index-VrF7NJa8.js";import"./VTable-DYyC8_qi.js";const i={__name:"index",setup(c){return(_,n)=>{const o=e;return t(),r(o)}}};export{i as default};
